@@ -157,6 +157,8 @@ p, span, a, label {
 
 .chip span {
     font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--primary-brown-medium);
     margin-left: .25rem;
 }
 
