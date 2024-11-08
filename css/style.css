@@ -88,8 +88,13 @@ p, span, a, label {
     height: 20px;
 }
 
-.container {
+.container-fluid {
     padding: 5rem;
+}
+
+.container {
+    max-width: 80%;
+    margin: 0 auto;
 }
 
 .container-half {
@@ -146,17 +151,17 @@ p, span, a, label {
     color: var(--primary-brown-medium);
 }
 
-.chip {
+.chip, .icon-text {
     display: flex;
     align-items: center;
 }
 
-.chip img {
+.chip img, .icon-text img {
     height: 24px;
 }
 
-.chip span {
-    font-size: 1.25rem;
+.chip span, .icon-text span {
+    font-size: 1.5rem;
     font-weight: 500;
     color: var(--primary-brown-medium);
     margin-left: .25rem;
@@ -206,8 +211,134 @@ p, span, a, label {
     margin-left: 1.5rem;
 }
 
-.contato-info {
-    padding: 5rem 3.75rem;
+/* .slide-wrapper {
+    min-height: 600px;
+}
+
+.slide-container {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    min-height: 600px;
+    transform: translateX(-50%);
+}
+
+.slide-item {
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.slide-item::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: red;
+    opacity: .6;
+    z-index: 1;
+}
+
+.slide-item h1, .slide-item p {
+    z-index: 100;
+} */
+
+.slide-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.slide-container {
+    display: flex;
+    position: relative;
+    background: red;
+    width: 100%;
+    height: 100vh;
+    transform: translateX(0%);
+    transition: 2s;
+}
+
+.slide-container:hover {
+    transform: translateX(-200%);
+}
+
+.slide-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    min-width: 100%;
+    height: 100%;
+}
+
+.slide-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.6);
+    z-index: 1;
+}
+
+.slide-item h1 {
+    color: white;
+    z-index: 100;
+}
+
+.slide-item h1::before, .slide-item h1::after {
+    background: white;
+    z-index: 100;
+}
+
+.slide-item p {
+    max-width: 800px;
+    text-align: center;
+    color: white;
+    z-index: 100;
+    font-size: 1.5rem;
+}
+
+.slide--1 {
+    background: url(../img/slide/Captura\ de\ tela\ 2024-10-29\ 204357.png) center;
+    background-size: cover;
+}
+
+.slide--2 {
+    background: url(../img/slide/Captura\ de\ tela\ 2024-10-29\ 204357.png) center;
+    background-size: cover;
+}
+
+.slide--3 {
+    background: url(../img/slide/Captura\ de\ tela\ 2024-10-29\ 204357.png) center;
+    background-size: cover;
+}
+
+.slide-button {
+    display: flex;
+    position: absolute;
+    z-index: 400;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.dot {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 24px;
+    border: 2px solid white;
+    z-index: 200;
+}
+
+.dot.active {
+    background: white;
+}
+
+.slide-button span + span {
+    margin-left: 1rem;
 }
 
 .tabnav {
@@ -238,10 +369,20 @@ p, span, a, label {
 
 .card-img {
     display: block;
+    position: relative;
     width: 180px!important;
     height: 180px!important;
     background: grey;
     margin-right: 1rem;
+    overflow: hidden;
+}
+
+.card-img img {
+    position: absolute;
+    max-height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
 }
 
 .card-info {
@@ -271,19 +412,39 @@ p, span, a, label {
 }
 
 .redes-sociais-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 20px;
 }
 
 .redes-sociais-container .redes-sociais-item {
+    position: relative;
     background: grey;
     min-height: 320px;
+    min-width: 320px;
+    overflow: hidden;
 }
 
-.contato-info .title h1::before, .contato-info .title h1::after, .newsletter .title h2::before, .newsletter .title h2::after {
+.redes-sociais-container .redes-sociais-item img {
+    position: absolute;
+    max-height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+}
+
+.contato-info .title h1::before, .contato-info .title h1::after, .newsletter .title h2::before, .newsletter .title h2::after, .historia .title h1::before, .historia .title h1::after, .contato-form .title h2::before, .contato-form .title h2::after {
     background-color: var(--secondary-green-dark);
+}
+
+.contato-info {
+    min-height: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8rem;
 }
 
 .contato-info h1 {
@@ -292,7 +453,6 @@ p, span, a, label {
 
 .contato-info p {
     text-align: center;
-    margin-bottom: 1.5rem;
 }
 
 .contato-img {
@@ -301,8 +461,18 @@ p, span, a, label {
     gap: 20px;
 }
 
+.contato-img img {
+    position: absolute;
+    max-width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+}
+
 .img-full {
+    position: relative;
     background: grey;
+    overflow: hidden;
 }
 
 .img-half {
@@ -312,7 +482,9 @@ p, span, a, label {
 }
 
 .img-half div {
+    position: relative;
     background: #241F1B;
+    overflow: hidden;
 }
 
 .newsletter h2 {
@@ -338,6 +510,7 @@ p, span, a, label {
 label {
     display: block;
     font-size: 1.5rem;
+    color: var(--secondary-green-dark);
     margin-bottom: .5rem;
 }
 
@@ -381,6 +554,115 @@ textarea {
 .footer a {
     text-decoration: none;
     color: var(--primary-brown-medium);
+}
+
+.sobre p {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.historia {
+    padding: 5rem 0;
+}
+
+.historia h1 {
+    color: var(--secondary-green-dark);
+}
+
+.tempo-wrapper {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    margin: 0 0 3rem 5rem;
+}
+
+.tempo-container {
+    display: flex;
+    transform: translateX(0px);
+}
+
+.tempo-item {
+    min-width: 480px;
+}
+
+.tempo-item + .tempo-item {
+    margin-left: 20px;
+}
+
+.tempo-img {
+    width: 100%;
+    min-height: 300px;
+    background: grey;
+    margin-bottom: 1.5rem;
+}
+
+.tempo-ano {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.tempo-ano h2 {
+    text-align: right;
+    color: var(--secondary-green-dark);
+}
+
+.tempo-ano span {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    margin: 0 20px 0 0;
+    background-color: var(--secondary-green-dark);
+}
+
+.tempo-arrows {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 5rem;
+}
+
+.tempo-arrows button {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary-green-dark);
+    border: 2px solid currentColor;
+    background: transparent;
+}
+
+.tempo-arrows svg path {
+    fill: currentColor;
+}
+
+.contato-dados {
+    display: flex;
+    justify-content: center;
+}
+
+.contato-dados div {
+    margin: 1.5rem 0;
+}
+
+.contato-dados div + div {
+    margin-left: 3rem;
+}
+
+.contato-dados span {
+    color: var(--secondary-green-dark); 
+}
+
+.contato-mapa {
+    display: grid;
+    grid-template-rows: 1fr;
+}
+
+.contato-form .title h2 {
+    color: var(--secondary-green-dark);
 }
 
 .contato-form div {
