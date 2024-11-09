@@ -196,3 +196,17 @@ Claro! Aqui está um menu de doces inspirado em uma padaria:
     - **Tipo:** Sem Glúten
 
 Espero que esse menu de doces de padaria encante seus clientes! */
+
+//SLIDE
+const containerSlide = document.querySelector('.slide-container');
+const slides = document.querySelectorAll('.slide-item');
+const slidesDots = document.querySelectorAll('.dot');
+
+slidesDots[0].classList.add('active')
+slidesDots.forEach((btn, index) => {
+   btn.addEventListener('click', () => {
+      containerSlide.style.transform = `translateX(-${index * 100}%)`;
+      slidesDots.forEach(dot => dot.classList.remove('active'));
+      btn.classList.add('active');
+   })
+})

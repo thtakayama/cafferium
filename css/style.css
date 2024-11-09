@@ -257,9 +257,9 @@ p, span, a, label {
     transition: 2s;
 }
 
-.slide-container:hover {
+/* .slide-container:hover {
     transform: translateX(-200%);
-}
+} */
 
 .slide-item {
     display: flex;
