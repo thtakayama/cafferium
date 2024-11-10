@@ -210,3 +210,23 @@ slidesDots.forEach((btn, index) => {
       btn.classList.add('active');
    })
 })
+
+//TABNAV
+
+const tabNav = document.querySelectorAll('.tabnav a');
+const tabContent = document.querySelectorAll('.tabcontent'); 
+console.log(tabNav);
+console.log(tabContent);
+
+tabNav.forEach((nav, index) => {
+   nav.addEventListener('click', () => {
+      console.log('tab: ', index);
+      if(tabContent[index]) {
+         console.log('Existe');
+         tabContent.forEach(tab => tab.classList.remove('active'));
+         tabContent[index].classList.add('active');
+      } else {
+         console.log('Não existe');
+      }
+   })
+});
