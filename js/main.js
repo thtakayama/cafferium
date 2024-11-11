@@ -197,19 +197,38 @@ Claro! Aqui está um menu de doces inspirado em uma padaria:
 
 Espero que esse menu de doces de padaria encante seus clientes! */
 
+//NAVBAR
+const infoHeader = document.querySelector('.info');
+const navbar = document.querySelector('.navbar');
+
 //SLIDE
 const containerSlide = document.querySelector('.slide-container');
 const slides = document.querySelectorAll('.slide-item');
 const slidesDots = document.querySelectorAll('.dot');
 
-slidesDots[0].classList.add('active')
+if(containerSlide) {
+   window.addEventListener('load', () => {
+      let heightInfoHeader = infoHeader.getBoundingClientRect().height;
+      let heightNavbar = navbar.getBoundingClientRect().height;
+      let heightWindow = window.innerHeight;
+      containerSlide.style.height = `${heightWindow - heightNavbar - heightInfoHeader}px`;
+      containerSlide.style.opacity = 1;
+      console.log(heightWindow);
+      console.log(heightInfoHeader);
+      console.log(heightNavbar);
+      console.log(`${heightWindow - heightNavbar - heightInfoHeader}px`);
+   })
+}
+
+if(slidesDots.length > 0){
+slidesDots[0].classList.add('active');
 slidesDots.forEach((btn, index) => {
    btn.addEventListener('click', () => {
       containerSlide.style.transform = `translateX(-${index * 100}%)`;
       slidesDots.forEach(dot => dot.classList.remove('active'));
       btn.classList.add('active');
    })
-})
+})}
 
 //TABNAV
 
@@ -230,3 +249,40 @@ tabNav.forEach((nav, index) => {
       }
    })
 });
+
+//SLIDER LINHA DO TEMPO
+const containerTimeline = document.querySelector('.tempo-container');
+
+if(containerTimeline){
+const itemsTimeline = document.querySelectorAll('.tempo-item');
+const btnLeftTimeline = document.querySelector('.tempo-arrows .arrow-left');
+const btnRightTimeline = document.querySelector('.tempo-arrows .arrow-right');
+
+let curTimeline = 0;
+let maxItemTimeline = itemsTimeline.length - 3;
+
+const goToItemTimeline = (curTimeline) => {
+   let style= getComputedStyle(itemsTimeline[curTimeline]);
+   let itemLeftmargin = style.marginLeft;
+   containerTimeline.style.transform = `translateX(-${(itemsTimeline[curTimeline].getBoundingClientRect().width) * curTimeline + (parseInt(itemLeftmargin) * curTimeline)}px)`;
+}
+
+btnRightTimeline.addEventListener('click', () => {
+   if(curTimeline === maxItemTimeline) {
+      curTimeline = 0;
+   } else {
+      curTimeline++;
+   }
+
+   goToItemTimeline(curTimeline);
+});
+
+btnLeftTimeline.addEventListener('click', () => {
+   if(curTimeline === 0) {
+      curTimeline = maxItemTimeline;
+   } else {
+      curTimeline--;
+   }
+
+   goToItemTimeline(curTimeline);
+});}
