@@ -1,16 +1,99 @@
 class menuItem {
-    constructor(nome, descricao, preco, tags, imagem){
-        this.nome = nome;
+    constructor(titulo, descricao, preco, tags, imagem){
+        this.titulo = titulo;
         this.descricao = descricao;
         this.preco = preco;
         this.tags = tags;
         this.imagem = imagem;
     }
+
+    getMenu() {
+      return this;
+    }
 };
 
-const paoDeQueijo = new menuItem('Pão de Queijo', 'Salgadinho com revheio de queijo.');
+class Lanche extends menuItem{
+   #tipo;
+   constructor(titulo, descricao, preco, tags, imagem, tipo = 'lanche') {
+      super(titulo, descricao, preco, tags, imagem);
+      this.#tipo = tipo;
+   }
+}
 
-console.log(paoDeQueijo);
+class Doce extends menuItem{
+   #tipo;
+   constructor(titulo, descricao, preco, tags, imagem, tipo = 'doce') {
+      super(titulo, descricao, preco, tags, imagem);
+      this.#tipo = tipo;
+   }
+}
+
+class Cafe extends menuItem{
+   #tipo;
+   constructor(titulo, descricao, preco, tags, imagem, tipo = 'cafe') {
+      super(titulo, descricao, preco, tags, imagem);
+      this.#tipo = tipo;
+   }
+}
+
+class Cha extends menuItem{
+   #tipo;
+   constructor(titulo, descricao, preco, tags, imagem, tipo = 'cha') {
+      super(titulo, descricao, preco, tags, imagem);
+      this.#tipo = tipo;
+   }
+}
+
+class Bebida extends menuItem{
+   #tipo;
+   constructor(titulo, descricao, preco, tags, imagem, tipo = 'bebida') {
+      super(titulo, descricao, preco, tags, imagem);
+      this.#tipo = tipo;
+   }
+}
+
+//LANCHES
+const saladaQuinoaLegumes = new Lanche('Salada de Quinoa e Legumes', 'Quinoa, vegetais frescos e molho cítrico.', '20,50', ['Vegano', 'Sem Glúten'], './img/menu/pao-de-queijo.jpg');
+const wrapAbacateGraoBico = new Lanche('Wrap de Abacate e Grão-de-Bico', 'Tortilha de arroz com abacate e grão-de-bico.', '20,50', ['Vegano', 'Sem Glúten'], './img/menu/pao-de-queijo.jpg');
+const quicheEspinafreQueijo = new Lanche('Quiche de Espinafre e Queijo', 'Quiche leve com espinafre e queijo cremoso.', '20,50', ['Vegetariano','Sem Glúten'], './img/menu/pao-de-queijo.jpg');
+const espagueteAbobrinha = new Lanche('Espaguete de Abobrinha com Molho Pesto', 'Abobrinha em espiral com molho pesto e frango.', '20,50', ['Sem Glúten'], './img/menu/pao-de-queijo.jpg');
+const omeleteQueijoEspinafre = new Lanche('Omelete de Queijo e Espinafre', 'Omelete leve com queijo e espinafre fresco.', '20,50', ['Vegetariano','Sem Glúten'], './img/menu/pao-de-queijo.jpg');
+
+//Doces
+const croissantChocolate = new Doce('Croissant de Chocolate', 'Quinoa, vegetais frescos e molho cítrico.', '20,50', ['Vegano', 'Sem Glúten'], './img/menu/pao-de-queijo.jpg');
+
+//Cafes
+const cafeEspresso = new Cafe('Café Espresso', 'Quinoa, vegetais frescos e molho cítrico.', '20,50', ['Vegano', 'Sem Glúten'], './img/menu/pao-de-queijo.jpg');
+
+//Chas
+const chaJasmim = new Cha('Chá de Jasmim', 'Quinoa, vegetais frescos e molho cítrico.', '20,50', ['Vegano', 'Sem Glúten'], './img/menu/pao-de-queijo.jpg');
+
+//Bebidas
+const coca = new Bebida('Coca Cola', 'Quinoa, vegetais frescos e molho cítrico.', '20,50', ['Vegano', 'Sem Glúten'], './img/menu/pao-de-queijo.jpg');
+
+const menu = [saladaQuinoaLegumes, wrapAbacateGraoBico, quicheEspinafreQueijo, espagueteAbobrinha, omeleteQueijoEspinafre, croissantChocolate, cafeEspresso, chaJasmim, coca];
+
+const lanches = menu.filter(lanche => lanche.tipo === 'lanche');
+const itemMenu = menu.map((item, index) => item.getMenu().tipo);
+console.log(lanches);
+console.log(itemMenu);
+
+const markup = `
+   <div class="card">
+                        <div class="card-img"><img src="${saladaQuinoaLegumes.imagem}" /></div>
+                        <div class="card-info">
+                            <h5>${saladaQuinoaLegumes.titulo}</h5>
+                            <span class="price">R$ ${saladaQuinoaLegumes.preco}</span>
+                            <p>${saladaQuinoaLegumes.descricao}</p>
+                            <div class="tags">
+                                <div class="chip">${saladaQuinoaLegumes.tags.map(tag => `<span>${tag}</span>`).join('')}</div>
+                            </div>
+                        </div>
+                    </div>
+`;
+
+console.log(saladaQuinoaLegumes);
+console.log(wrapAbacateGraoBico);
 console.log('Teste');
 /* 
 Aqui está um menu saudável para a sua cafeteria:
@@ -249,6 +332,9 @@ tabNav.forEach((nav, index) => {
       }
    })
 });
+
+tabContent[0].insertAdjacentHTML('afterbegin', markup);
+console.log(tabContent[0]);
 
 //SLIDER LINHA DO TEMPO
 const containerTimeline = document.querySelector('.tempo-container');

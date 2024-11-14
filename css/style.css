@@ -211,6 +211,31 @@ p, span, a, label {
     margin-left: 1.5rem;
 }
 
+.navbar-redes-sociais {
+    list-style: none;
+    display: flex;
+}
+
+.navbar-redes-sociais li + li {
+    margin-left: .5rem;
+}
+
+.navbar-redes-sociais a {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-brown-medium);
+    border: 2px solid currentColor;
+    background: transparent;
+}
+
+.navbar-redes-sociais img {
+    width: 24px;
+    height: 24px;
+}
+
 .slide-wrapper {
     position: relative;
     overflow: hidden;
