@@ -1,0 +1,66 @@
+$white: #FFFFFF;
+$primary-brown-dark: #573219;
+$primary-brown-medium: #845C33;
+$primary-brown-light: #FFF8EF;
+$secondary-green-dark: #5F6F52;
+$secondary-green-medium: #B1CC81;
+$secondary-green-light: #F5F9EF;
+$beige: #FEFAE0;
+$neutral-900: #241F1B;
+$neutral-800: #45403B;
+$neutral-700: #655F5A;
+$neutral-600: #79736E;
+$neutral-500: #A29B96;
+$neutral-400: #C2BBB5;
+$neutral-300: #E5DED8;
+$neutral-200: #F3ECE6;
+$neutral-100: #FBF3EE;
+$neutral-50: #FFF9F3;
+
+@mixin title($color: $primary-brown-dark){
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3rem;
+  h1, h2 {
+    padding: 0 20px;
+  }
+  h1::before, h1::after, h2::before, h2::after{
+    content: '';
+    display: inline-flex;
+    vertical-align: middle;
+    width: 48px;
+    height: 2px;
+    margin: 0 20px;
+    background-color: $color;
+    color: $color;
+}
+}
+
+@mixin button($background: $primary-brown-medium, $texto: $white, $border: $primary-brown-medium){
+    display: inline-block;
+    border: 2px solid;
+    padding: .5rem 1.25rem;
+    text-decoration: none;
+    font-size: 1.125rem;
+    font-weight: 500;
+    background: $background;
+    border-color: $border;
+    a {
+      color: $texto;
+    }
+}
+
+@mixin chip{
+  display: flex;
+  align-items: center;
+  img{
+    height: 24px;
+  }
+  span{
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: $primary-brown-medium;
+    margin-left: .25rem;
+  }
+}
